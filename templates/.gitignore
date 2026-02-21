@@ -1,0 +1,13 @@
+# Sensitive files
+*.env
+*secrets*
+*token*
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Temp
+*.swp
+*.swo
+*~

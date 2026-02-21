@@ -1,0 +1,35 @@
+{
+  "mcpServers": {
+    "sonarqube": {
+      "command": "docker",
+      "args": ["run", "--init", "--pull=always", "-i", "--rm", "--network=host", "-e", "SONARQUBE_TOKEN", "-e", "SONARQUBE_URL", "mcp/sonarqube"],
+      "env": {
+        "SONARQUBE_TOKEN": "CHANGE_ME",
+        "SONARQUBE_URL": "http://localhost:9000"
+      }
+    },
+    "playwright": {
+      "command": "npx",
+      "args": ["@anthropic-ai/playwright-mcp"]
+    },
+    "docker": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-docker"]
+    },
+    "postgres": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-postgres",
+        "postgresql://USER:PASSWORD@localhost:5432/DATABASE"
+      ]
+    },
+    "apidog": {
+      "command": "npx",
+      "args": ["-y", "apidog-mcp-server@latest", "--project-id=CHANGE_ME"],
+      "env": {
+        "APIDOG_ACCESS_TOKEN": "CHANGE_ME"
+      }
+    }
+  }
+}
